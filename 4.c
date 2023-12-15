@@ -13,13 +13,13 @@ struct ContaBancaria {
 
 void depositar(struct ContaBancaria *conta, double valor) {
     conta->saldo += valor;
-    printf("DepÃ³sito realizado com sucesso. Novo saldo: %.2f\n", conta->saldo);
+    printf("DepÃƒÂ³sito realizado com sucesso. Novo saldo: %.2f\n", conta->saldo);
 }
 
 
 void sacar(struct ContaBancaria *conta, double valor) {
     if (valor > conta->saldo) {
-        printf("Saldo insuficiente. OperaÃ§Ã£o cancelada.\n");
+        printf("Saldo insuficiente. OperaÃƒÂ§ÃƒÂ£o cancelada.\n");
     } else {
         conta->saldo -= valor;
         printf("Saque realizado com sucesso. Novo saldo: %.2f\n", conta->saldo);
@@ -49,7 +49,7 @@ int main() {
         printf("2. Sacar\n");
         printf("3. Imprimir Saldo\n");
         printf("0. Sair\n");
-        printf("Escolha a opÃ§Ã£o: ");
+        printf("Escolha a opÃƒÂ§ÃƒÂ£o: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
@@ -67,10 +67,10 @@ int main() {
                 imprimirSaldo(&minhaConta);
                 break;
             case 0:
-                printf("Saindo do programa. AtÃ© mais!\n");
+                printf("Saindo do programa. AtÃƒÂ© mais!\n");
                 break;
             default:
-                printf("OpÃ§Ã£o invÃ¡lida. Tente novamente.\n");
+                printf("OpÃƒÂ§ÃƒÂ£o invÃƒÂ¡lida. Tente novamente.\n");
         }
     } while (opcao != 0);
 
