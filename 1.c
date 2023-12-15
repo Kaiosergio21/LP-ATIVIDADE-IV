@@ -21,13 +21,13 @@
 	     	          		
 	       	     		
 	    
-			 printf("\nnome%s\nn�mero%s\n",pesquisar,a[i].num);	
+			 printf("\nnome%s\nnï¿½mero%s\n",pesquisar,a[i].num);	
 	            
 				return;
 			 }
 			 
 			
-		  printf("contato não encontrado");
+		  printf("contato nÃ£o encontrado");
 		 
 		 }
 
