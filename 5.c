@@ -55,7 +55,7 @@ int main() {
      
         
     
-            printf("salário: ");
+            printf("salÃ¡rio: ");
             scanf("%f", &a[i].salario[0]);  
             soma += a[i].salario[0];
         
@@ -68,7 +68,7 @@ int main() {
         
         media = calculos(soma);
         
-        printf("Média: %.1f\n", media); 
+        printf("MÃ©dia: %.1f\n", media); 
         
        
          media = 0;  
@@ -84,7 +84,7 @@ printf("\nprogramador\n");;
      
         
     
-            printf("salário: ");
+            printf("salÃ¡rio: ");
             scanf("%f", &a[i].salario[0]);  
             soma += a[i].salario[0];
         
@@ -97,7 +97,7 @@ printf("\nprogramador\n");;
         
         media = calculos(soma);
         
-        printf("Média: %.1f\n", media); 
+        printf("MÃ©dia: %.1f\n", media); 
         
        
          media = 0;  
