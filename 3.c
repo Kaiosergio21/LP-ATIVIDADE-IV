@@ -20,14 +20,14 @@ void realizarCompra(struct Produto *produto, int quantidadeComprada) {
         produto->quantidadeEstoque += quantidadeComprada;
         printf("Compra realizada com sucesso. Quantidade em estoque: %d\n", produto->quantidadeEstoque);
     } else {
-        printf("Quantidade invÃ¡lida. Compra cancelada.\n");
+        printf("Quantidade invÃƒÂ¡lida. Compra cancelada.\n");
     }
 }
 
  
 void consultarEstoque(struct Produto *produto) {
     printf("Produto: %s\n", produto->nome);
-    printf("PreÃ§o: %.2f\n", produto->preco);
+    printf("PreÃƒÂ§o: %.2f\n", produto->preco);
     printf("Quantidade em estoque: %d\n", produto->quantidadeEstoque);
     printf("Valor total em estoque: %.2f\n", calcularValorTotal(produto));
 }
@@ -47,7 +47,7 @@ int main() {
         printf("1. Realizar uma compra\n");
         printf("2. Consultar estoque\n");
         printf("3. Sair do programa\n");
-        printf("Escolha a opÃ§Ã£o: ");
+        printf("Escolha a opÃƒÂ§ÃƒÂ£o: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
@@ -60,10 +60,10 @@ int main() {
                 consultarEstoque(&meuProduto);
                 break;
             case 3:
-                printf("Saindo do programa. AtÃ© mais!\n");
+                printf("Saindo do programa. AtÃƒÂ© mais!\n");
                 break;
             default:
-                printf("OpÃ§Ã£o invÃ¡lida. Tente novamente.\n");
+                printf("OpÃƒÂ§ÃƒÂ£o invÃƒÂ¡lida. Tente novamente.\n");
         }
     } while (opcao != 3);
 
