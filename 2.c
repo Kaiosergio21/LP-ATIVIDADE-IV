@@ -2,58 +2,67 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define m 2
-
-struct agenda // nome autoexplicativo
-{
-    char nome[200];
-    char numero[200];
-    char email[200];
+struct aluno {
+    char nome[100];
+    float nota[2];
+    float media;
+    char nascimento[100];
 };
 
-void verify(struct agenda a[], char *procurar) // verifica o numero com o nome
-{
-    // int verificacao = 0;
+float somar(struct aluno a[]) {
     int i;
+    float soma = 0;
 
-    for (i = 0; i < m; i++)
-    {
-        if (strcmp(a[i].nome, procurar) == 0)
-        {
-            printf("\nnome: %s\nnumero: %s\nemail: %s\n", procurar, a[i].numero, a[i].email);
-        }
+    for (i = 0; i < 5; i++) {
+        soma += a[i].nota[0];
+    }
+
+    return soma;
+}
+
+float calculos(float soma) {
+    float media = soma / 2; 
+
+    return media;
+}
+
+void conclusion(float media) {
+    if (media >= 7) {
+        printf("\nAprovado\n");
+    } else {
+        printf("\nReprovado\n");
     }
 }
 
-int main()
-{
+int main() {
+    struct aluno a[5];
+    int i, j;
+    float soma = 0;
+    float media = 0;
 
-    struct agenda a[m];
-    int i;
-    char procurar[200];
+    for (i = 0; i < 5; i++) {
+        printf("Nome: ");
+        scanf("%s", a[i].nome);
 
-    for (i = 0; i < m; i++)
-    {
-        printf("digite o %d nome: ", i + 1);
-        gets(a[i].nome);
+        printf("Nascimento: ");
+        scanf("%s", a[i].nascimento);
 
-        printf("digite o %d numero: ", i + 1);
-        gets(a[i].numero);
+        soma = 0; 
 
-        printf("digite o %d email: ", i + 1);
-        gets(a[i].email);
+        for (j = 0; j < 2; j++) {
+            printf("Nota %d: ", j + 1);
+            scanf("%f", &a[i].nota[j]);
+            soma += a[i].nota[j];
+        }
 
-        printf("\n");
+        printf("Soma: %.1f\n", soma);
+
+        media = calculos(soma);
+
+        printf("Média: %.1f\n", media);
+
+        conclusion(media);
     }
 
-    do
-    {
-        printf("\n");
-        printf("pesquisar nome: ");
-        gets(procurar);
-
-        verify(a, procurar);
-    } while (procurar != 0);
-
-    return 0;
+    return 0;
 }
