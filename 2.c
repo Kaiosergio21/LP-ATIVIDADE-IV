@@ -59,7 +59,7 @@ int main() {
 
         media = calculos(soma);
 
-        printf("Média: %.1f\n", media);
+        printf("MÃ©dia: %.1f\n", media);
 
         conclusion(media);
     }
