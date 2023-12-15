@@ -2,77 +2,70 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-struct ContaBancaria {
-    int numeroConta;
-    char titular[50];
-    double saldo;
-    char tipoConta[20]; 
+ 
+struct Produto {
+    char nome[50];
+    double preco;
+    int quantidadeEstoque;
 };
 
-
-void depositar(struct ContaBancaria *conta, double valor) {
-    conta->saldo += valor;
-    printf("DepÃ³sito realizado com sucesso. Novo saldo: %.2f\n", conta->saldo);
+ 
+double calcularValorTotal(struct Produto *produto) {
+    return produto->preco * produto->quantidadeEstoque;
 }
 
-
-void sacar(struct ContaBancaria *conta, double valor) {
-    if (valor > conta->saldo) {
-        printf("Saldo insuficiente. OperaÃ§Ã£o cancelada.\n");
+ 
+void realizarCompra(struct Produto *produto, int quantidadeComprada) {
+    if (quantidadeComprada > 0) {
+        produto->quantidadeEstoque += quantidadeComprada;
+        printf("Compra realizada com sucesso. Quantidade em estoque: %d\n", produto->quantidadeEstoque);
     } else {
-        conta->saldo -= valor;
-        printf("Saque realizado com sucesso. Novo saldo: %.2f\n", conta->saldo);
+        printf("Quantidade invÃ¡lida. Compra cancelada.\n");
     }
 }
 
-
-void imprimirSaldo(struct ContaBancaria *conta) {
-    printf("Saldo atual da conta: %.2f\n", conta->saldo);
+ 
+void consultarEstoque(struct Produto *produto) {
+    printf("Produto: %s\n", produto->nome);
+    printf("PreÃ§o: %.2f\n", produto->preco);
+    printf("Quantidade em estoque: %d\n", produto->quantidadeEstoque);
+    printf("Valor total em estoque: %.2f\n", calcularValorTotal(produto));
 }
 
 int main() {
-    
-    struct ContaBancaria minhaConta;
-    minhaConta.numeroConta = 12345;
-    strcpy(minhaConta.titular, "Joao Silva");
-    minhaConta.saldo = 1000.0;
-    strcpy(minhaConta.tipoConta, "corrente");
+     
+    struct Produto meuProduto;
+    strcpy(meuProduto.nome, "Produto A");
+    meuProduto.preco = 10.99;
+    meuProduto.quantidadeEstoque = 50;
 
-    int opcao;
-    double valor;
+    int opcao, quantidade;
 
     do {
-        
+         
         printf("\n--- Menu ---\n");
-        printf("1. Depositar\n");
-        printf("2. Sacar\n");
-        printf("3. Imprimir Saldo\n");
-        printf("0. Sair\n");
+        printf("1. Realizar uma compra\n");
+        printf("2. Consultar estoque\n");
+        printf("3. Sair do programa\n");
         printf("Escolha a opÃ§Ã£o: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
             case 1:
-                printf("Digite o valor a ser depositado: ");
-                scanf("%lf", &valor);
-                depositar(&minhaConta, valor);
+                printf("Digite a quantidade a ser comprada: ");
+                scanf("%d", &quantidade);
+                realizarCompra(&meuProduto, quantidade);
                 break;
             case 2:
-                printf("Digite o valor a ser sacado: ");
-                scanf("%lf", &valor);
-                sacar(&minhaConta, valor);
+                consultarEstoque(&meuProduto);
                 break;
             case 3:
-                imprimirSaldo(&minhaConta);
-                break;
-            case 0:
                 printf("Saindo do programa. AtÃ© mais!\n");
                 break;
             default:
                 printf("OpÃ§Ã£o invÃ¡lida. Tente novamente.\n");
         }
-    } while (opcao != 0);
+    } while (opcao != 3);
 
     return 0;
 }
